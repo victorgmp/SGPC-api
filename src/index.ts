@@ -2,6 +2,7 @@ import { ServiceBase, Configuration, ServiceResources } from 'polymetis-node';
 import * as _ from 'lodash';
 import proxy from 'http-proxy-middleware';
 import cors from 'cors';
+import helmet from 'helmet';
 
 // Initializing service
 const configuration: Partial<Configuration> = {
@@ -24,6 +25,7 @@ service.init()
     ];
 
     service.apiApp.use(cors());
+    service.apiApp.use(helmet());
 
     for (const { route, target } of routes) {
       service.apiApp.use(
