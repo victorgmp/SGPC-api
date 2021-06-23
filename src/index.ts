@@ -1,6 +1,6 @@
-import { ServiceBase, Configuration, ServiceResources } from 'polymetis-node';
-import * as _ from 'lodash';
-import proxy from 'http-proxy-middleware';
+import { ServiceBase, Configuration } from 'polymetis-node';
+// import proxy from 'http-proxy-middleware';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import cors from 'cors';
 import helmet from 'helmet';
 
@@ -27,10 +27,11 @@ service.init()
     service.apiApp.use(cors());
     service.apiApp.use(helmet());
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const { route, target } of routes) {
       service.apiApp.use(
         route,
-        proxy({
+        createProxyMiddleware({
           target,
           changeOrigin: true,
           pathRewrite: (path: string) => {
