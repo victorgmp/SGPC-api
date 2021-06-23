@@ -9,7 +9,7 @@
     "build": "rm -rf dist && tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "test": "mocha --timeout=20000 'test/**/*.test.ts'",
-    "lint": "node_modules/.bin/tslint --project ./tsconfig.json -e src/**/*.json"
+    "lint": "eslint -c .eslintrc --ext .ts ./src"
   },
   "author": "",
   "devDependencies": {
@@ -17,11 +17,14 @@
     "@types/dotenv": "^6.1.0",
     "@types/lodash": "^4.14.118",
     "@types/mocha": "5.2.6",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "mocha": "^6.2.3",
     "ts-node": "^7.0.1",
     "ts-node-dev": "^1.1.6",
-    "tslint": "5.11.0",
-    "tslint-config-airbnb": "5.11.0",
     "typescript": "^3.1.6"
   },
   "dependencies": {
