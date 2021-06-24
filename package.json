@@ -5,11 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "start": "ts-node --fast --transpileOnly src/index.ts",
-    "start-dev": "ts-node-dev src/index.ts",
+    "dev": "ts-node-dev src/index.ts",
     "build": "rm -rf dist && tsc --project ./tsconfig.json",
     "clean": "rm -rf dist",
     "test": "mocha --timeout=20000 'test/**/*.test.ts'",
-    "lint": "eslint -c .eslintrc --ext .ts ./src"
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint --fix 'src/**/*.ts'"
   },
   "author": "",
   "devDependencies": {
